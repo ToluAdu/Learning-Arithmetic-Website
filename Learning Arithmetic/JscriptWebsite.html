@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Author - Tolu Adu - Ta480 - EL331 Assignment 2 -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    <title> E-Learning </title>
+    <style>
+        label,
+        input {
+            width: 120px;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 10px;
+
+        }
+
+        label {
+            width: 240px;
+            text-align: center;
+            padding-right: 10px;
+            margin-top: 2px;
+        }
+
+        br {
+            clear: left;
+        }
+
+        .button {
+            width: 120px;
+            background: #4378D9;
+            color: #042B73;
+            padding: 5px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            border-radius: 20px;
+
+
+        }
+
+        .button:hover {
+
+            color: #FFFFFF;
+            transform: scale(1.2, 1.2);
+
+        }
+
+        .star:hover {
+
+            transform: rotate(20deg);
+        }
+
+        input {
+            border-radius: 130px;
+            padding: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Gloria Hallelujah', cursive;
+            color: #FFFFFF;
+            font-size: 40px;
+            margin: 0;
+
+
+        }
+
+        h6 {
+            text-align: center;
+            font-family: 'Gloria Hallelujah', cursive;
+            color: #FFFFFF;
+            font-size: 20px;
+            clear: both;
+            margin: 0 auto;
+
+
+
+        }
+
+        label {
+            text-align: center;
+            font-family: 'Gloria Hallelujah', cursive;
+            color: #FFFFFF;
+
+
+        }
+
+        body {
+            margin-top: 100px;
+            background-color: #084BC6;
+            -webkit-animation-name: example;
+            -webkit-animation-duration: 4s;
+
+        }
+
+        img {
+            width: 200px;
+        }
+
+        .sideimg {
+            height: 250px;
+            width: auto;
+        }
+
+        @keyframes example {
+            from {
+                background-color: white;
+            }
+            to {
+                background-color: #084BC6;
+            }
+        }
+
+
+
+        .banner {
+            display: flex;
+            margin: 0 auto;
+            justify-content: center;
+            padding-bottom: 0px;
+        }
+
+        .mainbody {
+            display: flex;
+            margin: 0 auto;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+
+        input {
+            font-family: 'Gloria Hallelujah', cursive;
+            text-align: center;
+
+
+        }
+
+
+        @media only screen and (max-width:752px) {
+            img {
+                width: 130px;
+
+            }
+            .sideimg {
+                height: 170px;
+            }
+            
+        }
+
+        @media only screen and (max-width:602px) {
+            img {
+                width: 70px;
+
+            }
+            .sideimg {
+                height: 100px;
+            }
+        }
+
+        .results {
+            display: flex;
+
+            justify-content: center;
+            font-family: 'Gloria Hallelujah', cursive;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .gradecol
+        {
+            color: yellow;
+        }
+    </style>
+
+    <script type="text/javascript">
+        /* Define global variables */
+        var a, b;
+        var right = 0;
+        var totalq = 0;
+        var centage = 0;
+        var mark = "n/a";
+        var teacher = "Lets start!";
+
+
+
+        /* A method that uses the math.random() function to randomly generate integers in the range 1 to 12 */
+        function aNumber() {
+            var x = Math.floor((Math.random() * 12) + 1);
+            return x;
+
+        }
+
+        /* Two random integers are stored in the variables a and b, which are concatenated with 'times','plus' or 'minus' and stored in a local variable - question, displayed in the input textfields*/
+        function genQuestions() {
+            a = aNumber();
+            b = aNumber();
+            question = a + " times " + b;
+            din = document.getElementById("inputVal");
+            din.value = question;
+
+
+
+        }
+
+        function genQuestions2() {
+
+            c = aNumber();
+            d = aNumber();
+            question = c + " plus " + d;
+            din = document.getElementById("input");
+            din.value = question;
+
+        }
+
+        function genQuestions3() {
+
+            e = aNumber();
+            f = aNumber();
+            question = e + " minus " + f;
+            din = document.getElementById("input3");
+            din.value = question;
+
+        }
+        
+        function examine()
+        {
+            document.getElementById("right").innerHTML = right;
+            document.getElementById("totalq").innerHTML = totalq;
+
+
+            dout.value = null;
+            centage = Math.round((right / totalq) * 100);
+            document.getElementById("percentage").innerHTML = centage;
+
+
+            if (centage >= 90) {
+                mark = "A*";
+                teacher = "No one likes a know-it all!";
+            } else if (centage >= 85) {
+                mark = "A";
+                teacher = "You're a smart one arent you?";
+            } else if (centage >= 75) {
+                mark = "B";
+                teacher = "Solid performance";
+            } else if (centage >= 65) {
+                mark = "C";
+                teacher = "Satisfactory performance, try a bit harder";
+            } else if (centage >= 55) {
+                mark = "D";
+                teacher = "You can do a lot better!";
+            } else if (centage >= 45) {
+                mark = "E";
+                teacher = "Maybe you should practice more";
+            } else if (centage < 45) {
+                mark = "F";
+                teacher = "Have you practiced at all!?";
+            }
+
+            document.getElementById("grade").innerHTML = mark;
+            document.getElementById("teacher").innerHTML = teacher;
+        }
+
+
+
+
+
+
+        /* Stores 5 strings for the variable 'correct' and 5 for 'incorrect', another math random function generates a number in the range 1-5 */
+
+        /* X is whatever value entered into a output textfield, if it equals for example the product of variables a and b then a window alert displaying one of 5 'correct' messages pops up and a new question is generated, else one of 5 'incorrect' messages pops up. The textfield is cleared at the end.*/
+        function buttonPressed() {
+            var x;
+            totalq++;
+
+
+            var correct = ["Very good!",
+                "Excellent!",
+                "Correct - Nice work!",
+                "Correct – keep up the good work!",
+                "Faultless work – brilliant!"
+            ];
+
+
+
+            var wrong = ["No. Please try again.",
+                "Wrong. Try once more.",
+                "Incorrect – Don’t give up.",
+                "No – keep trying.",
+                "That’s not correct – have another go."
+            ];
+
+
+
+
+            var y = Math.floor((Math.random() * 5) + 0);
+
+
+            dout = document.getElementById("outputVal");
+            x = dout.value;
+
+            if (x == a * b) {
+                window.alert(correct[y]);
+                genQuestions();
+                right++;
+
+            } else {
+                window.alert(wrong[y]);
+
+            }
+            
+            examine();
+
+            
+
+
+
+        }
+
+        function buttonPressed2() {
+            totalq++;
+            var x;
+            var correct = ["Very good!",
+                "Excellent!",
+                "Correct - Nice work!",
+                "Correct – keep up the good work!",
+                "Faultless work – brilliant!"
+            ];
+
+
+
+            var wrong = ["No. Please try again.",
+                "Wrong. Try once more.",
+                "Incorrect – Don’t give up.",
+                "No – keep trying.",
+                "That’s not correct – have another go."
+            ];
+            var y = Math.floor((Math.random() * 5) + 0);
+
+            dout = document.getElementById("output");
+            x = dout.value;
+
+            if (x == c + d) {
+                window.alert(correct[y]);
+                genQuestions2();
+                right++;
+            } else {
+                window.alert(wrong[y]);
+
+            }
+
+            examine();
+
+        }
+
+        function buttonPressed3() {
+            totalq++;
+            var x;
+            var correct = ["Very good!",
+                "Excellent!",
+                "Correct - Nice work!",
+                "Correct – keep up the good work!",
+                "Faultless work – brilliant!"
+            ];
+
+
+
+            var wrong = ["No. Please try again.",
+                "Wrong. Try once more.",
+                "Incorrect – Don’t give up.",
+                "No – keep trying.",
+                "That’s not correct – have another go."
+            ];
+            var y = Math.floor((Math.random() * 5) + 0);
+
+            dout = document.getElementById("output3");
+            x = dout.value;
+
+            if (x == e - f) {
+                window.alert(correct[y]);
+                genQuestions3();
+                right++;
+            } else {
+                window.alert(wrong[y]);
+
+            }
+
+            examine();
+        }
+    </script>
+
+</head>
+
+<body onload="genQuestions(),genQuestions2(),genQuestions3();">
+
+    <div class="banner">
+        <img class="star" src="star.svg" alt="star" >
+        <h1>Learning Arithmetic </h1>
+    </div>
+    <h6> By Tolu </h6>
+
+    <div class="mainbody">
+        <img class="sideimg" src="calc.svg" alt="calculator">
+        <form name="myForm" id="myForm" action="#">
+            <label>What is</label>
+            <input id="inputVal" name="inputVal" type="text" />
+            <br>
+            <label>The answer is</label>
+            <input name="outputVal" id="outputVal" type="text" />
+            <br>
+            <input class="button" name="Check my answer" type="button" value="Check my answer" onclick="buttonPressed()" />
+        </form>
+        <img class="sideimg" src="board.png" alt="board">
+
+    </div>
+
+    <div class="mainbody">
+        <img class="sideimg" src="https://image.flaticon.com/icons/svg/167/167751.svg" alt="board">
+        <form name="myForm2" id="myForm2" action="#">
+            <label>What is</label>
+            <input id="input" name="input" type="text" />
+            <br>
+            <label>The answer is</label>
+            <input name="output" id="output" type="text" />
+            <br>
+            <input class="button" name="Check my answer" type="button" value="Check my answer" onclick="buttonPressed2()" />
+        </form>
+        <img class="sideimg" src="https://image.flaticon.com/icons/svg/265/265682.svg" alt="calculator">
+
+    </div>
+
+    <div class="mainbody">
+        <img class="sideimg" src="https://image.flaticon.com/icons/svg/148/148788.svg" alt="calculator">
+        <form name="myForm3" id="myForm3" action="#">
+            <label>What is</label>
+            <input id="input3" name="input3" type="text" />
+            <br>
+            <label>The answer is</label>
+            <input name="output3" id="output3" type="text" />
+            <br>
+            <input class="button" name="Check my answer" type="button" value="Check my answer" onclick="buttonPressed3()" />
+        </form>
+        <img class="sideimg" src="https://image.flaticon.com/icons/svg/179/179396.svg" alt="minus">
+    </div>
+<div class="bottombod"> 
+    <div class="results">
+
+        <div>You have answered&nbsp;</div>
+
+        <div id="right">0</div>
+        <div>&nbsp;out of&nbsp;</div>
+        <div id="totalq"> 0 </div>
+        <div> &nbsp;questions correctly </div>
+
+    </div>
+
+    <div class="results">
+        <div> Your Percentage&nbsp; </div>
+        <div id="percentage"> 0 </div>
+        <div> % </div>
+    </div>
+    
+    <div class="results">
+        <div class="gradecol"> Grade&nbsp;</div>
+        <div id="grade" class="gradecol"> n/a </div>
+    </div>
+    <p class="results" id="teacher"> Lets Start! </p>
+
+</div>
+
+</body>
+
+</html>
